@@ -13,13 +13,7 @@ npm install --save laravel-elixir-lost
 Next, add it to your gulpfile
 
 ```js
-var elixir = require('laravel-elixir');
-
 require('laravel-elixir-lost');
-
-elixir(function(mix) {
-   mix.lost('public/css/app.css', 'public/css');
-});
 ```
 
 ## Usage
