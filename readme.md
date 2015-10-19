@@ -1,6 +1,6 @@
 ## Usage
 
-This Laravel Elixir extension allows you to compile Stylus.
+This Laravel Elixir extension allows you to compile Lost.
 
 ## Installation
 

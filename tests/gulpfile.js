@@ -5,6 +5,7 @@ require('../index.js');
 elixir.config.assetsPath = '';
 elixir.config.sourcemaps = false;
 elixir.config.css.sass.folder = '';
+elixir.config.css.outputFolder = 'css';
 
 elixir(function(mix){
 	mix.sass('app.scss', 'css/lost.css')
