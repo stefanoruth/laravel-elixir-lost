@@ -1,6 +1,6 @@
 {
   "name": "laravel-elixir-lost",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Laravel Elixir Lost Extension",
   "main": "index.js",
   "dependencies": {

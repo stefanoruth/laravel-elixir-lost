@@ -22,8 +22,8 @@ Assuming you write...
 
 ```js
 elixir(function(mix) {
-	mix.sass('app.scss', 'css/lost.css')
-		.lost('css/lost.css', 'css/app.css');
+	mix.sass('app.scss', 'public/css/lost.css')
+		.lost('../../public/css/lost.css', 'public/css/app.css');
 });
 ```
 
