@@ -1,10 +1,5 @@
 var Elixir = require('laravel-elixir'),
-	gulp = require('gulp'),
 	lost = require('lost'),
-	postcss = require('gulp-postcss'),
-	sourcemaps = require('gulp-sourcemaps'),
-	gulpif = require('gulp-if'),
-	rename = require('gulp-rename');
 	compile = require('laravel-elixir/tasks/shared/Css');
 
 var Task = Elixir.Task;
