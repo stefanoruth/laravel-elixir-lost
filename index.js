@@ -14,12 +14,11 @@ Elixir.extend('lost', function(src, output, options){
 		]
 	};
 
+	var paths = new Elixir.GulpPaths()
+					.src(src, config.get('assets.css.lost.folder'))
+					.output(output || config.get('public.css.outputFolder'), 'app.css');
+
 	new Elixir.Task('lost', function(){
-		var paths = new Elixir.GulpPaths()
-						.src(src, config.get('assets.css.lost.folder'))
-						.output(output || config.get('public.css.outputFolder'), 'app.css');
-
-
 		return compile({
 			name: 'Lost',
             compiler: require('gulp-postcss'),
@@ -28,5 +27,5 @@ Elixir.extend('lost', function(src, output, options){
             task: this,
             pluginOptions: options || config.css.lost.pluginOptions,
 		});
-	}).watch(src);
+	}).watch(paths.src.path);
 });
