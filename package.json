@@ -1,12 +1,12 @@
 {
   "name": "laravel-elixir-lost",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Laravel Elixir Lost Extension",
   "main": "index.js",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.1",
-    "laravel-elixir": "^3.3.3",
+    "laravel-elixir": "^4.0.0",
     "lost": "^6.6.2"
   },
   "devDependencies": {},
