@@ -2,6 +2,8 @@
 
 This Laravel Elixir extension allows you to compile Lost.
 
+The current version is running on `laravel-elixir ^4.0.0`
+
 ## Installation
 
 First, pull in the package though npm install
@@ -18,13 +20,31 @@ require('laravel-elixir-lost');
 
 ## Usage
 
-Assuming you write...
+this plugins now suppots sass, less and standard css
+
+### Sass
 
 ```js
 elixir(function(mix) {
-	mix.sass('app.scss', 'public/css/lost.css')
-		.lost('../../public/css/lost.css', 'public/css/app.css');
+	mix.sassLost('app.scss', 'public/css/app.css');
 });
 ```
 
-...this will run your css file thought the LostGrid
+### Less
+
+```js
+elixir(function(mix) {
+	mix.lessLost('app.less', 'public/css/app.css');
+});
+```
+
+### Styles
+
+```js
+elixir(function(mix) {
+	mix.stylesLost([
+		'main.css',
+		'grid.css',
+	], 'public/css/app.css');
+});
+```

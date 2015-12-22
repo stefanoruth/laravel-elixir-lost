@@ -1,22 +1,28 @@
 var Elixir = require('laravel-elixir'),
 	lost = require('lost'),
-	compile = require('laravel-elixir/tasks/shared/Css');
+	compile = require('laravel-elixir/tasks/shared/Css'),
+	gulp = require('gulp');
 
-var Task = Elixir.Task;
 var config = Elixir.config;
 
-Elixir.extend('lost', function(src, output, options){
-	config.css.lost = {
-		folder: '',
+/*
+ * Lost Module Config
+ */
+config.css.lost = {
+	tempFile: config.publicPath+'/'+config.css.outputFolder+'/lost.css',
 
-		pluginOptions: [
-			lost()
-		]
-	};
+	pluginOptions: [
+		lost()
+	],
+};
 
+/*
+ * Lost Task Compiler
+ */
+var lostTask = function(src, output) {
 	var paths = new Elixir.GulpPaths()
-					.src(src, config.get('assets.css.lost.folder'))
-					.output(output || config.get('public.css.outputFolder'), 'app.css');
+							.src(src, '')
+							.output(output || config.get('public.css.outputFolder'), 'app.css');
 
 	new Elixir.Task('lost', function(){
 		return compile({
@@ -25,7 +31,31 @@ Elixir.extend('lost', function(src, output, options){
             src: paths.src,
             output: paths.output,
             task: this,
-            pluginOptions: options || config.css.lost.pluginOptions,
+            pluginOptions: config.css.lost.pluginOptions,
 		});
 	}).watch(paths.src.path);
+};
+
+/**
+ * Lost Compiler for Sass & Scss
+ */
+Elixir.extend('sassLost', function() {
+	Elixir.mixins.sass(arguments[0], config.css.lost.tempFile);
+	lostTask(config.css.lost.tempFile, arguments[1]);
+});
+
+/**
+ * Lost Compiler for Less
+ */
+Elixir.extend('lessLost', function() {
+	Elixir.mixins.less(arguments[0], config.css.lost.tempFile);
+	lostTask(config.css.lost.tempFile, arguments[1]);
+});
+
+/**
+ * Lost Compiler for styles
+ */
+Elixir.extend('stylesLost', function() {
+	Elixir.mixins.styles(arguments[0], config.css.lost.tempFile);
+	lostTask(config.css.lost.tempFile, arguments[1]);
 });
