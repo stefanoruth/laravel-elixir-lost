@@ -21,17 +21,17 @@ config.css.lost = {
  */
 var lostTask = function(src, output) {
 	var paths = new Elixir.GulpPaths()
-							.src(src, '')
-							.output(output || config.get('public.css.outputFolder'), 'app.css');
+					.src(src, '')
+					.output(output || config.get('public.css.outputFolder'), 'app.css');
 
 	new Elixir.Task('lost', function(){
 		return compile({
 			name: 'Lost',
-            compiler: require('gulp-postcss'),
-            src: paths.src,
-            output: paths.output,
-            task: this,
-            pluginOptions: config.css.lost.pluginOptions,
+			compiler: require('gulp-postcss'),
+			src: paths.src,
+			output: paths.output,
+			task: this,
+			pluginOptions: config.css.lost.pluginOptions,
 		});
 	}).watch(paths.src.path);
 };
