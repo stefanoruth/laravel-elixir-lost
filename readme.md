@@ -2,7 +2,7 @@
 
 This Laravel Elixir extension allows you to compile Lost.
 
-The current version is running on `laravel-elixir ^4.0.0`
+The current version is running on `laravel-elixir ^6.0.0-0`
 
 ## Installation
 
